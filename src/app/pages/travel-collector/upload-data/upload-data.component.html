@@ -1,0 +1,11 @@
+<nb-card>
+  <nb-card-header>העלאת קובץ Xlsx</nb-card-header>
+  <nb-card-body>
+    <div class="buttons-row">
+    <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="בחר קובץ" accept=".xlsx">
+     <button nbButton status="primary" type="button" hero (click)="Upload()">
+        העלאה
+      </button>
+    </div>
+  </nb-card-body>
+</nb-card>

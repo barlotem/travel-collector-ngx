@@ -4,7 +4,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'הטיולים שלי',
     icon: 'compass-outline',
-    link: '/pages/travel-collector'
+    link: '/pages/table'
+  },
+  {
+    title: 'העלאת קובץ',
+    icon: 'upload-outline',
+    link: '/pages/upload'
   },
   {
     title: 'E-commerce',

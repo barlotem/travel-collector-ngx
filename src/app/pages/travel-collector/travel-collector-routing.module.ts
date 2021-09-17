@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TableComponent } from './table/table.component';
+import { UploadDataComponent } from './upload-data/upload-data.component';
 
 const routes: Routes = [{
   path: '',
@@ -9,6 +10,10 @@ const routes: Routes = [{
     {
       path: 'table',
       component: TableComponent,
+    },
+    {
+      path: 'upload',
+      component: UploadDataComponent,
     },
   ],
 }];

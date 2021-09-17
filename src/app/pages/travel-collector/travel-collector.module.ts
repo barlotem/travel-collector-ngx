@@ -17,9 +17,10 @@ import { TravelDialogComponent } from './travel-dialog/travel-dialog.component';
 import { SearchPipe } from './search.pipe';
 import { TableComponent } from './table/table.component';
 import { TravelCollectorRoutingModule } from './travel-collector-routing.module';
+import { UploadDataComponent } from './upload-data/upload-data.component';
 
 @NgModule({
-  declarations: [TableComponent, SearchPipe, TravelDialogComponent],
+  declarations: [TableComponent, SearchPipe, TravelDialogComponent, UploadDataComponent],
   imports: [
     ThemeModule,
     NbInputModule,

@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { TableComponent } from './travel-collector/table/table.component';
+import { UploadDataComponent } from './travel-collector/upload-data/upload-data.component';
 
 const routes: Routes = [{
   path: '',
@@ -20,9 +21,12 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
-      path: 'travel-collector',
-      loadChildren: () => import('./travel-collector/travel-collector.module')
-        .then(m => m.TravelCollectorModule),
+      path: 'table',
+      component: TableComponent,
+    },
+    {
+      path: 'upload',
+      component: UploadDataComponent,
     },
     {
       path: 'layout',
