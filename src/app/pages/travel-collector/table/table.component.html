@@ -20,6 +20,7 @@
       <div class="table-responsive">
         <table class="table table-striped ">
           <thead class="text-primary">
+            <tr>
             <th>
               מספר טיול
             </th>
@@ -35,9 +36,10 @@
             <th>
               מדינה
             </th>
-            <th class="text-right">
-              Distance
+            <th>
+              מרחק
             </th>
+          </tr>
           </thead>
           <tbody>
             <tr *ngFor="let travel of travelList | travelFilter: searchTerm" (click)="OpenDialog(travel)">

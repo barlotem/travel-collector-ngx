@@ -10,10 +10,11 @@ export class SearchPipe implements PipeTransform {
       return value;
     }
     return value.filter((val: Travel) => {
-      let rVal = //(val.country.toLocaleLowerCase().includes(args)) || 
+      let rVal = (val.country.toLocaleLowerCase().includes(args)) || 
       (val.group.toLocaleLowerCase().includes(args)) || 
       (val.track.toLocaleLowerCase().includes(args)) || 
       (val.keyWords.toLocaleLowerCase().includes(args)) || 
+      (val.guide.toLocaleLowerCase().includes(args)) || 
       (val.date.toLocaleString('he-IL').toLocaleLowerCase().includes(args)) || 
       (val.albumId.toString().includes(args));
       return rVal;

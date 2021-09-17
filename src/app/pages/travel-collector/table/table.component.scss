@@ -1,7 +1,19 @@
 .table-responsive {
     position: relative;
-    height: 300px;
+    height: 60vh;
     overflow: auto;
     display: block;
     margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+table thead tr th {
+    text-align: right;
+    position: sticky;
+    top: -1px;
+    background-color: white;
+}
+
+table tbody tr {
+    cursor: pointer;
 }
