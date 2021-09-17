@@ -2,6 +2,11 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
+    title: 'Table',
+    icon: 'shopping-cart-outline',
+    link: '/pages/travel-collector'
+  },
+  {
     title: 'E-commerce',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',

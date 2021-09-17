@@ -1,0 +1,67 @@
+<!-- <nb-card>
+  <nb-card-header>Hero Buttons</nb-card-header>
+  <nb-card-body>
+    <div class="buttons-row">
+      <button nbButton status="primary" stat hero>
+        העלאת קובץ חדש
+      </button>
+    </div>
+  </nb-card-body>
+</nb-card> -->
+
+<div class="card">
+    <div class="card-header">
+      <h4 class="card-title">הטיולים שלי</h4>
+    </div>
+    <div class="card-body">
+
+    <input type="text" nbInput [(ngModel)]="searchTerm" placeholder="חפש...">
+ 
+      <div class="table-responsive">
+        <table class="table table-striped ">
+          <thead class="text-primary">
+            <th>
+              מספר טיול
+            </th>
+            <th>
+              שם
+            </th>
+            <th>
+              קבוצה
+            </th>
+            <th>
+              תאריך
+            </th>
+            <th>
+              מדינה
+            </th>
+            <th class="text-right">
+              Distance
+            </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let travel of travelList | travelFilter: searchTerm" (click)="OpenDialog(travel)">
+              <td>
+                {{travel.albumId}}
+              </td>
+              <td>
+                {{travel.track}}
+              </td>
+              <td>
+                {{travel.group}}
+              </td>
+              <td>
+                {{travel.date | date:'dd.MM.YYYY'}}
+              </td>
+              <td>
+                {{travel.country}}
+              </td>
+              <td class="text-right">
+                {{travel.distanceInKm}}
+              </td>
+            </tr>       
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -8,7 +8,7 @@ export class Travel {
     public distanceInKm: number,
     public keyWords: string,
     public alternative: string,
-    public contry: string,
+    public country: string,
     public notes: string,
     public link: string,
     public link2: string,

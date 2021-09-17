@@ -30,11 +30,13 @@ import { PlayerComponent } from './rooms/player/player.component';
 import { TrafficComponent } from './traffic/traffic.component';
 import { TrafficChartComponent } from './traffic/traffic-chart.component';
 import { FormsModule } from '@angular/forms';
+import { TravelCollectorModule } from '../travel-collector/travel-collector.module';
 
 @NgModule({
   imports: [
     FormsModule,
     ThemeModule,
+    TravelCollectorModule,
     NbCardModule,
     NbUserModule,
     NbButtonModule,

@@ -1,0 +1,84 @@
+<nb-card>
+  <nb-card-header>
+    אלבום מספר {{ travel.albumId}} - {{travel.track }}
+    <nb-icon class="close-btn" icon="close" pack="eva" (click)="dismiss()"></nb-icon>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label">תאריך</label>
+          <input nbInput fullWidth [value]="travel.date| date:'dd.MM.YYYY'">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label">קבוצה</label>
+          <input nbInput fullWidth [value]="travel.group">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label">מדריך</label>
+          <input nbInput fullWidth [value]="travel.guide">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label">ק"מ</label>
+          <input nbInput fullWidth [value]="travel.distanceInKm">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label">מדינה</label>
+          <input nbInput fullWidth [value]="travel.country">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label">חלופי</label>
+          <input nbInput fullWidth [value]="travel.alternative">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label">הערות</label>
+          <input nbInput fullWidth [value]="travel.notes">
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="label">מילות מפתח: </label>
+          <br>
+          <ng-container *ngFor="let key of travel.keyWords.split(',')" >
+            <button class="tags" nbButton hero shape="round" size="tiny" status="danger" *ngIf="key!=''">
+              {{key}}
+            </button> 
+         </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <label class="label">קישורים:</label>
+        <br>
+          <a class="link" [href]="travel.link" *ngIf="travel.link!=','">
+            <img src="/assets/images/google-photos.png" width="30" height="30">
+          </a>
+          <a class="link" nbButton hero status="warning" [href]="travel.link2" *ngIf="travel.link2!=','">
+           קישור נוסף
+        </a>
+        <a class="link" nbButton hero status="warning" [href]="travel.goPlusLink" *ngIf="travel.goPlusLink!=','">
+          GoPlus
+        </a>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
