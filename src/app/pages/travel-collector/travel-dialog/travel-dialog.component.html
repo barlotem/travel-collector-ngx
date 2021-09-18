@@ -8,13 +8,13 @@
       <div class="col-sm-6">
         <div class="form-group">
           <label class="label">תאריך</label>
-          <input nbInput fullWidth [value]="travel.date| date:'dd.MM.YYYY'">
+          <input nbInput fullWidth readonly [value]="travel.date| date:'dd.MM.YYYY'">
         </div>
       </div>
       <div class="col-sm-6">
         <div class="form-group">
           <label class="label">קבוצה</label>
-          <input nbInput fullWidth [value]="travel.group">
+          <input nbInput fullWidth readonly [value]="travel.group">
         </div>
       </div>
     </div>
@@ -22,13 +22,13 @@
       <div class="col-sm-6">
         <div class="form-group">
           <label class="label">מדריך</label>
-          <input nbInput fullWidth [value]="travel.guide">
+          <input nbInput fullWidth readonly [value]="travel.guide">
         </div>
       </div>
       <div class="col-sm-6">
         <div class="form-group">
           <label class="label">ק"מ</label>
-          <input nbInput fullWidth [value]="travel.distanceInKm">
+          <input nbInput fullWidth readonly [value]="travel.distanceInKm">
         </div>
       </div>
     </div>
@@ -36,13 +36,13 @@
       <div class="col-sm-6">
         <div class="form-group">
           <label class="label">מדינה</label>
-          <input nbInput fullWidth [value]="travel.country">
+          <input nbInput fullWidth readonly [value]="travel.country">
         </div>
       </div>
       <div class="col-sm-6">
         <div class="form-group">
           <label class="label">חלופי</label>
-          <input nbInput fullWidth [value]="travel.alternative">
+          <input nbInput fullWidth readonly [value]="travel.alternative">
         </div>
       </div>
     </div>
@@ -50,7 +50,7 @@
       <div class="col-sm-6">
         <div class="form-group">
           <label class="label">הערות</label>
-          <input nbInput fullWidth [value]="travel.notes">
+          <input nbInput fullWidth readonly [value]="travel.notes">
         </div>
       </div>
       <div class="col-sm-12">
@@ -70,7 +70,7 @@
         <label class="label">קישורים:</label>
         <br>
           <a class="link" target="_blank" [href]="travel.link" *ngIf="travel.link!=','">
-            <img src="/assets/images/google-photos.png" width="30" height="30">
+            <img src="assets/images/google-photos.png" width="30" height="30">
           </a>
           <a class="link" nbButton hero status="warning" target="_blank" [href]="travel.link2" *ngIf="travel.link2!=','">
            קישור נוסף

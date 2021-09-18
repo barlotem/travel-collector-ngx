@@ -7,6 +7,7 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { TableComponent } from './travel-collector/table/table.component';
 import { UploadDataComponent } from './travel-collector/upload-data/upload-data.component';
+import { StatisticsComponent } from './travel-collector/statistics/statistics.component';
 
 const routes: Routes = [{
   path: '',
@@ -27,6 +28,10 @@ const routes: Routes = [{
     {
       path: 'upload',
       component: UploadDataComponent,
+    },
+    {
+      path: 'statistics',
+      component: StatisticsComponent,
     },
     {
       path: 'layout',
@@ -80,7 +85,7 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: 'table',
       pathMatch: 'full',
     },
     {

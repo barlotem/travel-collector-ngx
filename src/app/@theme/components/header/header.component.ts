@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
+  hideMenuOnClick: boolean = false;
   user: any;
 
   themes = [
@@ -50,27 +51,44 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
-
-    this.user = { name: 'שלמה', picture: 'assets/images/alan.png' };
-    
+  
+    this.user = {
+      name: 'שלמה',
+      picture: 'assets/images/alan.png'
+    };
+  
     // this.userService.getUsers()
     //   .pipe(takeUntil(this.destroy$))
     //   .subscribe((users: any) => this.user = users.nick);
-
-    const { xl } = this.breakpointService.getBreakpointsMap();
+  
+    const {
+      xl
+    } = this.breakpointService.getBreakpointsMap();
+    const {
+      is
+    } = this.breakpointService.getBreakpointsMap();
+  
     this.themeService.onMediaQueryChange()
       .pipe(
-        map(([, currentBreakpoint]) => currentBreakpoint.width < xl),
+        map(([, currentBreakpoint]) => currentBreakpoint),
         takeUntil(this.destroy$),
       )
-      .subscribe((isLessThanXl: boolean) => this.userPictureOnly = isLessThanXl);
-
+      .subscribe(currentBreakpoint => {
+        this.userPictureOnly = currentBreakpoint.width < xl;
+        this.hideMenuOnClick = currentBreakpoint.width <= xl;
+      });
+  
     this.themeService.onThemeChange()
-      .pipe(
-        map(({ name }) => name),
+      .pipe(map(({name}) => name),
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
+  
+    this.menuService.onItemClick().subscribe(() => {
+      if (this.hideMenuOnClick) {
+        this.sidebarService.collapse('menu-sidebar');
+      }
+    });
   }
 
   ngOnDestroy() {
