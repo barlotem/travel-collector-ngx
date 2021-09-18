@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Travel } from '../../../@core/models/Travel';
 import { TravelService } from '../../../@core/utils/Travel.service';
 import * as XLSX from 'xlsx';
+import { NbGlobalPhysicalPosition, NbToastrService } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-upload-data',
@@ -13,8 +14,11 @@ export class UploadDataComponent implements OnInit {
   arrayBuffer:any;
   file:File;
   travelList: Travel[];
+  title: string;
+  body: string;
+  config: any;
 
-  constructor(public travelService: TravelService) { 
+  constructor(public travelService: TravelService, private toastrService: NbToastrService) { 
     this.travelList = new Array<Travel>();
   }
 
@@ -25,7 +29,13 @@ export class UploadDataComponent implements OnInit {
     this.file = event.target.files[0]; 
   }
   
+  RemoveData() {
+    localStorage.removeItem("travelList");
+  }
+
    Upload() {
+
+   
       let fileReader = new FileReader();
       fileReader.onload = (e) => {
           this.arrayBuffer = fileReader.result;
@@ -38,14 +48,57 @@ export class UploadDataComponent implements OnInit {
           var worksheet = workbook.Sheets[first_sheet_name];
           let jsonObj:Array<any> = XLSX.utils.sheet_to_json(worksheet,{raw:true});
 
+          try{
           for (var i=3; i<jsonObj.length; i++){
+            // Make sure there is album_id
+            if (jsonObj[i].__EMPTY_12 == null){
+              throw 'Not valid';
+            }
             this.travelList.push(new Travel(jsonObj[i].__EMPTY_12, this.ExcelDateToJSDate(jsonObj[i].__EMPTY_11), jsonObj[i].__EMPTY_10,jsonObj[i].__EMPTY_9,
               jsonObj[i].__EMPTY_8,jsonObj[i].__EMPTY_7,jsonObj[i].__EMPTY_6,jsonObj[i].__EMPTY_5,jsonObj[i].__EMPTY_4,jsonObj[i].__EMPTY_3,jsonObj[i].__EMPTY_2,jsonObj[i].__EMPTY_1,jsonObj[i].__EMPTY));
           }
 
           this.travelService.setTravelList(this.travelList);
+    
+          // Build success toastr 
+          this.config = {
+            status: 'success',
+            destroyByClick: true,
+            duration: 2500,
+            hasIcon: true,
+            position: NbGlobalPhysicalPosition.BOTTOM_LEFT,
+            preventDuplicates: true,
+          };
+
+          this.title =  'הקובץ עלה בהצלחה';
+          this.body = `גש לעמוד הטיולים שלי על מנת לראות את העדכון`;
+          
+          // Show toastr with message of finish upload
+          this.toastrService.show(this.body, this.title, this.config);
+        }
+        catch(error) {
+    
+          console.error(error);
+    
+           // Build success toastr 
+           this.config = {
+            status: 'danger',
+            destroyByClick: true,
+            duration: 5000,
+            hasIcon: true,
+            position: NbGlobalPhysicalPosition.BOTTOM_LEFT,
+            preventDuplicates: true,
+          };
+    
+          this.title =  'לא הצליח להעלות';
+          this.body = `אנא וודא שהקובץ במבנה תקין`;
+    
+           // Show toastr with message of finish upload
+           this.toastrService.show(this.body, this.title, this.config);
+        }    
       }
-      fileReader.readAsArrayBuffer(this.file);       
+      fileReader.readAsArrayBuffer(this.file); 
+      
   }
   
   ExcelDateToJSDate(serial) {
