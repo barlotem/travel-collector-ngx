@@ -69,13 +69,13 @@
       <div class="col-sm-12">
         <label class="label">קישורים:</label>
         <br>
-          <a class="link" [href]="travel.link" *ngIf="travel.link!=','">
+          <a class="link" target="_blank" [href]="travel.link" *ngIf="travel.link!=','">
             <img src="/assets/images/google-photos.png" width="30" height="30">
           </a>
-          <a class="link" nbButton hero status="warning" [href]="travel.link2" *ngIf="travel.link2!=','">
+          <a class="link" nbButton hero status="warning" target="_blank" [href]="travel.link2" *ngIf="travel.link2!=','">
            קישור נוסף
         </a>
-        <a class="link" nbButton hero status="warning" [href]="travel.goPlusLink" *ngIf="travel.goPlusLink!=','">
+        <a class="link" nbButton hero status="warning" target="_blank" [href]="travel.goPlusLink" *ngIf="travel.goPlusLink!=','">
           GoPlus
         </a>
       </div>
