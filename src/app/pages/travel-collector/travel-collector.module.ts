@@ -19,9 +19,16 @@ import { TableComponent } from './table/table.component';
 import { TravelCollectorRoutingModule } from './travel-collector-routing.module';
 import { UploadDataComponent } from './upload-data/upload-data.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { ChartModule } from 'angular2-chartjs';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
-  declarations: [TableComponent, SearchPipe, TravelDialogComponent, UploadDataComponent, StatisticsComponent],
+  declarations: [
+    TableComponent, 
+    SearchPipe, 
+    TravelDialogComponent,
+    UploadDataComponent, 
+    StatisticsComponent],
   imports: [
     ThemeModule,
     NbInputModule,
@@ -35,7 +42,9 @@ import { StatisticsComponent } from './statistics/statistics.component';
     NbSelectModule,
     NbIconModule,
     TravelCollectorRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxChartsModule,
+    ChartModule,
   ],
   providers: [TravelService]
 })
