@@ -26,6 +26,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
       this.colors = config.variables;
       this.chartjs = config.variables.chartjs;
 
+      // Charts option
       this.topCountriesOptions = {
         maintainAspectRatio: false,
         responsive: true,
@@ -69,17 +70,15 @@ export class StatisticsComponent implements OnInit, OnDestroy {
             },
           },
         ],
-        yAxes: [
-          {
-            gridLines: {
-              display: true,
-              color: this.chartjs.axisLineColor,
-            },
-            ticks: {
-              fontColor: this.chartjs.textColor,
-            },
-          },
-        ],
+        yAxes: [{
+          id: 'A',
+          type: 'linear',
+          position: 'left',
+        }, {
+          id: 'B',
+          type: 'linear',
+          position: 'right'
+        }]
       },
     };
   
@@ -130,10 +129,12 @@ export class StatisticsComponent implements OnInit, OnDestroy {
       datasets: [{
         data: byYear.map(x=> x.count),
         label: 'מספר טיולים',
+        yAxisID: 'B',
         backgroundColor: NbColorHelper.hexToRgbA(this.colors.primaryLight, 0.8),
       }, {
         data: byYear.map(x=> x.kmSum),
-        label: 'סה"כ קלומטרים',
+        label: 'סה"כ קילומטרים',
+        yAxisID: 'A',
         backgroundColor: NbColorHelper.hexToRgbA(this.colors.infoLight, 0.8),
       }],
     };
