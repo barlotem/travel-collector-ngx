@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Travel } from '../../@core/models/Travel';
 @Pipe({
-  name: 'travelFilter'
+  name: 'travelFilter',
+  pure: false
 })
 export class SearchPipe implements PipeTransform {
 

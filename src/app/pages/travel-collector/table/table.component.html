@@ -4,8 +4,16 @@
     </div>
     <div class="card-body">
 
-    <input type="search" nbInput [(ngModel)]="searchTerm" placeholder="חפש...">
+    <input type="search" nbInput shape="round" [(ngModel)]="searchTerm" placeholder="חפש...">
  
+    <!-- <nb-form-field>
+      <input type="search" nbInput shape="round" [(ngModel)]="searchTerm" placeholder="חפש...">
+      <button nbSuffix nbButton ghost (click)="Search()">
+        <nb-icon icon="search-outline" pack="eva">
+        </nb-icon>
+      </button>
+    </nb-form-field> -->
+
       <div class="table-responsive">
         <table class="table table-striped ">
           <thead class="text-primary">
@@ -34,7 +42,7 @@
           </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let travel of travelList | travelFilter: searchTerm" (click)="OpenDialog(travel)">
+            <tr *ngFor="let travel of (travelList | travelFilter: [searchTerm])" (click)="OpenDialog(travel)">
               <td>
                 {{travel.albumId}}
               </td>
