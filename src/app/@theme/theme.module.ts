@@ -86,9 +86,7 @@ export class ThemeModule {
           {
             name: 'default',
           },
-          [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME ],
-          DEFAULT_MEDIA_BREAKPOINTS,
-           NbLayoutDirection.RTL
+          [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME ]
         ).providers,
       ],
     };
